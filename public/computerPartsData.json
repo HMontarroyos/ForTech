@@ -7,46 +7,86 @@
     },
     {
       "name": "Processador Intel Core i5",
-      "image":  "./images/processor/i5.png",
+      "image": "./images/processor/i5.png",
       "price": 1259.48
     },
     {
       "name": "Processador Intel Core i7",
-      "image":  "./images/processor/i7.png",
-      "price": 1599.00
+      "image": "./images/processor/i7.png",
+      "price": 1599.0
     },
     {
       "name": "Processador Intel Core i9",
-      "image":  "./images/processor/i9.png",
-      "price": 1979.00
+      "image": "./images/processor/i9.png",
+      "price": 1979.0
     }
   ],
   "Motherboard": [
     {
-      "name": "Memory A",
-      "image": "memoryA.jpg",
-      "price": 50
+      "name": "Placa Mãe Razor",
+      "image": "./images/motherboard/razor.png",
+      "price": 999.89
+    },
+    {
+      "name": "Placa Mãe AMD",
+      "image": "./images/motherboard/amd.png",
+      "price": 789.68
+    },
+    {
+      "name": "Placa Mãe Intel",
+      "image": "./images/motherboard/intel.png",
+      "price": 987.54
     }
   ],
   "Memory": [
     {
-      "name": "Memory A",
-      "image": "memoryA.jpg",
-      "price": 50
+      "name": "Memória 8GB Ddr4",
+      "image": "./images/memory/8gb.png",
+      "price": 242.2
+    },
+    {
+      "name": "Memória 16GB Ddr4",
+      "image": "./images/memory/16gb.png",
+      "price": 339.4
+    },
+    {
+      "name": "Memória 32GB Ddr4",
+      "image": "./images/memory/32gb.png",
+      "price": 609.9
     }
   ],
   "VideoCard": [
     {
-      "name": "Memory A",
-      "image": "memoryA.jpg",
-      "price": 50
+      "name": "NVIDIA GTX 1660",
+      "image": "./images/videoCard/nvdia1660.png",
+      "price": 1399.00
+    },
+    {
+      "name": "AMD Radeon RX 580",
+      "image": "./images/videoCard/amd.png",
+      "price": 1259.10
+    },
+    {
+      "name": "NVIDIA RTX 3070",
+      "image": "./images/videoCard/rtx.png",
+      "price": 7055.12
     }
   ],
   "Storage": [
     {
-      "name": "Memory A",
-      "image": "memoryA.jpg",
-      "price": 50
+      "name": "256GB SSD",
+      "image": "./images/storage/ssd256.png",
+      "price": 369.20
+    },
+    {
+      "name": "1TB HDD",
+      "image": "./images/storage/1tb.png",
+      "price": 520.68
+    },
+    {
+      "name": "512GB SSD",
+      "image": "./images/storage/ssd512.png",
+      "price": 820.32
     }
   ]
 }
