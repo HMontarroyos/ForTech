@@ -8,8 +8,10 @@ import {
 } from "../../components";
 import { FaComputer } from "react-icons/fa6";
 import { BsCreditCard2Back } from "react-icons/bs";
+import { useComputerParts } from "../../global/ComputerPartsContext";
 
 const Home: React.FC = () => {
+
   return (
     <S.Container>
       <S.ContainerAlert>
