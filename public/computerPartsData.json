@@ -1,0 +1,52 @@
+{
+  "Processor": [
+    {
+      "name": "Processador Intel Core i3",
+      "image": "./images/processor/i3.png",
+      "price": 716.68
+    },
+    {
+      "name": "Processador Intel Core i5",
+      "image":  "./images/processor/i5.png",
+      "price": 1259.48
+    },
+    {
+      "name": "Processador Intel Core i7",
+      "image":  "./images/processor/i7.png",
+      "price": 1599.00
+    },
+    {
+      "name": "Processador Intel Core i9",
+      "image":  "./images/processor/i9.png",
+      "price": 1979.00
+    }
+  ],
+  "Motherboard": [
+    {
+      "name": "Memory A",
+      "image": "memoryA.jpg",
+      "price": 50
+    }
+  ],
+  "Memory": [
+    {
+      "name": "Memory A",
+      "image": "memoryA.jpg",
+      "price": 50
+    }
+  ],
+  "VideoCard": [
+    {
+      "name": "Memory A",
+      "image": "memoryA.jpg",
+      "price": 50
+    }
+  ],
+  "Storage": [
+    {
+      "name": "Memory A",
+      "image": "memoryA.jpg",
+      "price": 50
+    }
+  ]
+}
