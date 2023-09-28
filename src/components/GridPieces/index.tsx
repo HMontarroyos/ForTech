@@ -12,7 +12,7 @@ function GridPieces() {
   return (
     <S.Container>
       {parts &&
-        parts.Processor.map((processor, index) => (
+        parts.Storage.map((processor, index) => (
           <S.ContainerCard key={index}>
             <S.ContainerImage>
               <S.Image src={processor.image} alt={`Image ${processor.name}`} />
