@@ -1,7 +1,11 @@
 import { lazy } from "react";
+import CardPieces from "./CardPieces";
+import GridPieces from "./GridPieces";
+import ButtonProduct from "./ButtonProduct"
+import Progress from "./Progress"
 
 const Header = lazy(async () => await import("./Header"));
 const Loading = lazy(async () => await import("./Loading"));
 const Footer = lazy(async () => await import("./Footer"));
 
-export { Header, Footer, Loading };
+export { Header, Footer, Loading, CardPieces, GridPieces, ButtonProduct, Progress };
