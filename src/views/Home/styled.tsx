@@ -63,10 +63,93 @@ export const TextAdvert = styled.h1`
 `;
 
 export const ContainerParts = styled.div`
-  margin-top: 200px;
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+`;
+
+export const ContainerGrid = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ContainerButtons = styled.div``;
+
+export const SelectedButtonParts = styled.button`
+  font-size: 18px;
+  font-family: ${(props) => props.theme.fonts.text};
+  color: ${(props) => props.theme.colors.tertiary};
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
+  border-radius: 5px;
+  align-items: center;
+  height: 30px;
+  margin-right: 30px;
+  cursor: pointer;
+  padding: 20px;
+
+  &:hover {
+    background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
+  }
+
+  p {
+    margin-left: 10px;
+  }
+`;
+
+export const ContainerValueTotal = styled.div`
+  margin-top: 10px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  color: ${(props) => props.theme.colors.tertiary};
+  background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
+  width: 265px;
+  border-radius: 5px;
+  height: 100px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ContainerTextValue = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: initial;
+  align-items: center;
+  text-align: center;
+  color: ${(props) => props.theme.colors.tertiary};
+  font-size: 25px;
+
+  div {
+    margin-left: 10px;
+  }
+`;
+
+export const TextValue = styled.p`
+  color: ${(props) => props.theme.colors.tertiary};
+  font-size: 30px;
+  font-family: ${(props) => props.theme.fonts.text};
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+export const TextInInstallments = styled.p`
+  font-size: 12px;
+  font-family: ${(props) => props.theme.fonts.subtitle};
+  color: ${(props) => props.theme.colors.tertiary};
+`;
+
+export const Price = styled.h1`
+  font-size: 20px;
+  font-family: ${(props) => props.theme.fonts.text};
+  color: ${(props) => props.theme.colors.secondary};
 `;
