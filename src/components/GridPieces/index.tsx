@@ -1,50 +1,28 @@
+import { useComputerParts } from "../../global/ComputerPartsContext";
+import { formatCurrency } from "../../utils";
 import * as S from "./styled";
 
 function GridPieces() {
+  const { parts } = useComputerParts();
+
+  if (!parts) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <S.Container>
-      <S.ContainerCard>
-        <S.ContainerImage>
-          <S.Image
-            src={
-              "https://media.pichau.com.br/media/catalog/product/cache/ef72d3c27864510e5d4c0ce69bade259/t/g/tgt-egnt1-120110000.jpg"
-            }
-            alt={"image"}
-          />
-        </S.ContainerImage>
-        <S.ContainerText>
-          <S.Title>Processador AMD Ryzen 5 7600, 6-Core, 12-Threads</S.Title>
-          <S.Price>R$ 1.399,00</S.Price>
-        </S.ContainerText>
-      </S.ContainerCard>
-      <S.ContainerCard>
-        <S.ContainerImage>
-          <S.Image
-            src={
-              "https://media.pichau.com.br/media/catalog/product/cache/ef72d3c27864510e5d4c0ce69bade259/t/g/tgt-egnt1-120110000.jpg"
-            }
-            alt={"image"}
-          />
-        </S.ContainerImage>
-        <S.ContainerText>
-          <S.Title>Processador AMD Ryzen 5 7600, 6-Core, 12-Threads</S.Title>
-          <S.Price>R$ 1.399,00</S.Price>
-        </S.ContainerText>
-      </S.ContainerCard>
-      <S.ContainerCard>
-        <S.ContainerImage>
-          <S.Image
-            src={
-              "https://media.pichau.com.br/media/catalog/product/cache/ef72d3c27864510e5d4c0ce69bade259/t/g/tgt-egnt1-120110000.jpg"
-            }
-            alt={"image"}
-          />
-        </S.ContainerImage>
-        <S.ContainerText>
-          <S.Title>Processador AMD Ryzen 5 7600, 6-Core, 12-Threads</S.Title>
-          <S.Price>R$ 1.399,00</S.Price>
-        </S.ContainerText>
-      </S.ContainerCard>
+      {parts &&
+        parts.Processor.map((processor, index) => (
+          <S.ContainerCard key={index}>
+            <S.ContainerImage>
+              <S.Image src={processor.image} alt={`Image ${processor.name}`} />
+            </S.ContainerImage>
+            <S.ContainerText>
+              <S.Title>{processor.name}</S.Title>
+              <S.Price>{formatCurrency(processor.price)}</S.Price>
+            </S.ContainerText>
+          </S.ContainerCard>
+        ))}
     </S.Container>
   );
 }
