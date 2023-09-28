@@ -13,7 +13,7 @@ const Routes: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Router>
-        <Footer/>
+        {/* <Footer/> */}
       </Suspense>
     </BrowserRouter>
   );
