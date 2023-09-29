@@ -8,15 +8,27 @@ function GridPieces() {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
 
   const handleRadioCheck = (index: number) => {
-    const newCheckedMap: { [key: number]: boolean } = {};
-    newCheckedMap[index] = true;
+    const newCheckedMap = { ...checkedMap };
+    const isCurrentlyChecked = newCheckedMap[index];
+
+    if (isCurrentlyChecked) {
+      delete newCheckedMap[index];
+    } else {
+      Object.keys(newCheckedMap).forEach((key: any) => {
+        if (parseInt(key) !== index) {
+          delete newCheckedMap[key];
+        }
+      });
+      newCheckedMap[index] = true;
+    }
+
     setCheckedMap(newCheckedMap);
   };
 
   const { parts } = useComputerParts();
 
   if (!parts) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
