@@ -7,11 +7,12 @@ interface Part {
 }
 
 interface ComputerParts {
-    Processor: Part[];
-    Motherboard: Part[];
+  Processor: Part[];
+  Motherboard: Part[];
   Memory: Part[];
   VideoCard: Part[];
   Storage: Part[];
+  [key: string]: Part[];
 }
 
 interface ComputerPartsContextType {
@@ -35,11 +36,11 @@ export const ComputerPartsProvider: React.FC<ComputerPartsProviderProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/computerPartsData.json');
+        const response = await fetch("/computerPartsData.json");
         const data = await response.json();
         setParts(data);
       } catch (error) {
-        console.error('Erro ao carregar os dados:', error);
+        console.error("Erro ao carregar os dados:", error);
       }
     };
 

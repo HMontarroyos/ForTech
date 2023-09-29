@@ -3,26 +3,32 @@ import { useComputerParts } from "../../global/ComputerPartsContext";
 import { formatCurrency } from "../../utils";
 import { Checkbox, Loading } from "../../components";
 import * as S from "./styled";
+import { useSelectedItems } from "../../global/SelectedItemsContext";
 
 function GridPieces() {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
+  const { selectedItems, addSelectedItem, removeSelectedItem } =
+    useSelectedItems();
 
-  const handleRadioCheck = (index: number) => {
-    const newCheckedMap = { ...checkedMap };
-    const isCurrentlyChecked = newCheckedMap[index];
+  const handleRadioCheck = (index: number, processor: any) => {
+    setCheckedMap((prevState) => {
+      const newCheckedMap = { ...prevState };
+      const isCurrentlyChecked = newCheckedMap[index];
 
-    if (isCurrentlyChecked) {
-      delete newCheckedMap[index];
-    } else {
-      Object.keys(newCheckedMap).forEach((key: any) => {
-        if (parseInt(key) !== index) {
-          delete newCheckedMap[key];
-        }
-      });
-      newCheckedMap[index] = true;
-    }
-
-    setCheckedMap(newCheckedMap);
+      if (isCurrentlyChecked) {
+        delete newCheckedMap[index];
+        removeSelectedItem("Processor"); 
+      } else {
+        Object.keys(newCheckedMap).forEach((key: any) => {
+          if (parseInt(key) !== index) {
+            delete newCheckedMap[key];
+          }
+        });
+        newCheckedMap[index] = true;
+        addSelectedItem("Processor", processor); 
+      }
+      return newCheckedMap;
+    });
   };
 
   const { parts } = useComputerParts();
@@ -37,7 +43,7 @@ function GridPieces() {
         parts.Storage.map((processor, index) => (
           <S.ContainerCard
             key={index}
-            onClick={() => handleRadioCheck(index)}
+            onClick={() => handleRadioCheck(index, processor)}
             actived={checkedMap[index]}
           >
             <S.ContainerImage>
