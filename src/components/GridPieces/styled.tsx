@@ -27,6 +27,7 @@ export const ContainerCard = styled.div<PropsCard>`
   margin: 10px;
   cursor: pointer;
   padding: 20px;
+  position: relative;
 
   &:hover {
     background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
