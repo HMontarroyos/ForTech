@@ -13,7 +13,6 @@ export const Container = styled.button`
   background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
   height: 130px;
   width: 287px;
-  cursor: pointer;
   font-family: ${(props) => props.theme.fonts.text};
   color: ${(props) => props.theme.colors.tertiary};
   font-weight: bold;
