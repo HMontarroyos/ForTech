@@ -1,4 +1,4 @@
-import { FaCheck } from "react-icons/fa";
+import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import * as S from "./styled";
 import { MdNotInterested } from "react-icons/md";
 
@@ -11,10 +11,10 @@ function ButtonProduct({ disabled, onClick }: ButtonProductProps) {
   return (
     <S.Container disabled={disabled} onClick={onClick}>
       <S.ContainerText>
-        {disabled ? <MdNotInterested /> : <FaCheck />}
+        {disabled ? <MdNotInterested /> : <TbPlayerTrackNextFilled/>}
         <div>
-          <S.Title>Selecione</S.Title>
-          <S.Text>Um produto na lista</S.Text>
+          <S.Title>{disabled ? "Selecione" : "Próxima"}</S.Title>
+          <S.Text>{disabled ? "um produto na lista" : "etapa"}</S.Text>
         </div>
       </S.ContainerText>
     </S.Container>

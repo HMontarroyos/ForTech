@@ -6,6 +6,7 @@ type Colors = {
   background: string;
   text: string;
   disabledText: string;
+  alert: string;
 };
 
 type Fonts = {
@@ -29,6 +30,7 @@ export const Theme: ThemeType = {
     background: "#A2C614",
     text: "#1B1B1B",
     disabledText: "#d3d3d3",
+    alert: "#A3020D",
   },
   fonts: {
     title: "Croissant One, cursive",
