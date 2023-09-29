@@ -40,7 +40,7 @@ function GridPieces() {
   return (
     <S.Container>
       {parts &&
-        parts.Storage.map((processor, index) => (
+        parts.Processor.map((processor, index) => (
           <S.ContainerCard
             key={index}
             onClick={() => handleRadioCheck(index, processor)}

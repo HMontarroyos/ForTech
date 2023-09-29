@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { HorizontalBottom } from "../../assets/images/svg";
-import { lighten } from "polished";
+import { darken, lighten } from "polished";
 
 const pulse = keyframes`
   0%, 100% {
@@ -98,6 +98,13 @@ export const SelectedButtonParts = styled.button`
 
   &:hover {
     background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
+  }
+
+  &:disabled { 
+    background-color: ${(props) => darken(0.1, props.theme.colors.disabledText)};
+    color: ${(props) => lighten(0.1, props.theme.colors.disabledText)};
+    cursor: not-allowed;
+
   }
 
   p {

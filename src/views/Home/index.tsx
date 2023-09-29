@@ -37,6 +37,19 @@ const Home: React.FC = () => {
     setTotalPrice(calculateTotalPrice());
   }, [selectedItems, parts]);
 
+  const calculateProgress = () => {
+    if (parts && selectedItems) {
+      let totalCategories = Object.keys(parts).length;
+      let selectedCategories = Object.keys(selectedItems).length;
+      return (selectedCategories / totalCategories) * 100;
+    }
+    return 0;
+  };
+
+  const progressValue = calculateProgress();
+
+  const isButtonDisabled = Object.keys(selectedItems).length === 0;
+
   return (
     <S.Container>
       <S.ContainerAlert>
@@ -53,12 +66,15 @@ const Home: React.FC = () => {
       <S.ContainerGrid>
         <GridPieces />
         <S.ContainerButtons>
-          <S.SelectedButtonParts onClick={() => console.log("TESTE")}>
+          <S.SelectedButtonParts
+            disabled={isButtonDisabled}
+            onClick={() => console.log("TESTE")}
+          >
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
           </S.SelectedButtonParts>
           <ButtonProduct />
-          <Progress value={100} />
+          <Progress value={progressValue} category={"Process"} />
           {totalPrice > 0 && (
             <S.ContainerValueTotal>
               <S.TextValue>Valor Atual</S.TextValue>
