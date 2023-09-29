@@ -5,6 +5,7 @@ import {
   CardPieces,
   GridPieces,
   Progress,
+  ModalPieces
 } from "../../components";
 import { FaComputer } from "react-icons/fa6";
 import { BsCreditCard2Back } from "react-icons/bs";
@@ -15,6 +16,15 @@ import { useSelectedItems } from "../../global/SelectedItemsContext";
 const Home: React.FC = () => {
   const { selectedItems } = useSelectedItems();
   const { parts } = useComputerParts();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -68,7 +78,7 @@ const Home: React.FC = () => {
         <S.ContainerButtons>
           <S.SelectedButtonParts
             disabled={isButtonDisabled}
-            onClick={() => console.log("TESTE")}
+            onClick={handleOpenModal} 
           >
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
@@ -91,6 +101,7 @@ const Home: React.FC = () => {
           )}
         </S.ContainerButtons>
       </S.ContainerGrid>
+      <ModalPieces isOpen={isModalOpen} onClose={handleCloseModal} />
     </S.Container>
   );
 };
