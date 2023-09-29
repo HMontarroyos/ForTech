@@ -100,11 +100,10 @@ export const SelectedButtonParts = styled.button`
     background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
   }
 
-  &:disabled { 
-    background-color: ${(props) => darken(0.1, props.theme.colors.disabledText)};
-    color: ${(props) => lighten(0.1, props.theme.colors.disabledText)};
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.disabledText};
+    color: ${(props) => darken(0.5, props.theme.colors.tertiary)};
     cursor: not-allowed;
-
   }
 
   p {

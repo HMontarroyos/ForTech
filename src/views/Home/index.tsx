@@ -73,7 +73,7 @@ const Home: React.FC = () => {
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
           </S.SelectedButtonParts>
-          <ButtonProduct />
+          <ButtonProduct disabled={isButtonDisabled} onClick={()=> console.log("TESTE")}/>
           <Progress value={progressValue} category={"Process"} />
           {totalPrice > 0 && (
             <S.ContainerValueTotal>

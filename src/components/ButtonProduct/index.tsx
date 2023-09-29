@@ -1,11 +1,17 @@
+import { FaCheck } from "react-icons/fa";
 import * as S from "./styled";
 import { MdNotInterested } from "react-icons/md";
 
-function ButtonProduct() {
+interface ButtonProductProps {
+  disabled: boolean;
+  onClick: () => void;
+}
+
+function ButtonProduct({ disabled, onClick }: ButtonProductProps) {
   return (
-    <S.Container>
+    <S.Container disabled={disabled} onClick={onClick}>
       <S.ContainerText>
-        <MdNotInterested />
+        {disabled ? <MdNotInterested /> : <FaCheck />}
         <div>
           <S.Title>Selecione</S.Title>
           <S.Text>Um produto na lista</S.Text>

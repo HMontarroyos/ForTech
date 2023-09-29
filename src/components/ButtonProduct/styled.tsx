@@ -1,4 +1,4 @@
-import { lighten } from "polished";
+import { darken } from "polished";
 import styled from "styled-components";
 
 export const Container = styled.button`
@@ -8,7 +8,7 @@ export const Container = styled.button`
   text-align: center;
   margin-top: 10px;
   border-radius: 5px;
-  background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
+  background-color: ${(props) => darken(0.1, props.theme.colors.primary)};
   height: 60px;
   width: 287px;
   cursor: pointer;
@@ -17,7 +17,13 @@ export const Container = styled.button`
   font-weight: bold;
 
   &:hover {
-    background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
+    background-color: ${(props) => darken(0.2, props.theme.colors.primary)};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.disabledText};
+    color: ${(props) => darken(0.5, props.theme.colors.tertiary)};
+    cursor: not-allowed;
   }
 `;
 
@@ -32,7 +38,6 @@ export const ContainerText = styled.div`
 export const Title = styled.p`
   margin-left: 10px;
   font-family: ${(props) => props.theme.fonts.text};
-  color: ${(props) => props.theme.colors.tertiary};
   font-weight: bold;
   font-size: 25px;
   text-transform: uppercase;
@@ -41,7 +46,6 @@ export const Title = styled.p`
 export const Text = styled.p`
   margin-left: 10px;
   font-family: ${(props) => props.theme.fonts.text};
-  color: ${(props) => props.theme.colors.tertiary};
   font-size: 18px;
   font-weight: 200;
 `;
