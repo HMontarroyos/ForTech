@@ -62,7 +62,7 @@ const Home: React.FC = () => {
 
   const isButtonDisabled = Object.keys(selectedItems).length === 0;
 
-  const handleNextCategory = () => {
+  /* const handleNextCategory = () => {
     if (parts) {
       const categories = Object.keys(parts);
       const currentIndex = categories.indexOf(currentCategory);
@@ -84,6 +84,33 @@ const Home: React.FC = () => {
     }
   }, [parts, currentCategory]);
 
+ */
+
+  const [modalText, setModalText] = useState("Componentes Selecionados");
+
+  useEffect(() => {
+    if (parts) {
+      const categories = Object.keys(parts);
+      const currentIndex = categories.indexOf(currentCategory);
+
+      setIsLastCategory(currentIndex === categories.length - 1);
+    }
+  }, [parts, currentCategory]);
+
+  const handleNextCategory = () => {
+    if (parts) {
+      const categories = Object.keys(parts);
+      const currentIndex = categories.indexOf(currentCategory);
+
+      if (currentIndex < categories.length - 1) {
+        setCurrentCategory(categories[currentIndex + 1]);
+        setModalText("Componentes Selecionados");
+      } else {
+        setModalText("Parabéns, você concluiu a seleção!");
+      }
+    }
+  };
+
   const isCategoryEmpty = () => {
     return !selectedItems[currentCategory];
   };
@@ -99,10 +126,10 @@ const Home: React.FC = () => {
         <S.TextAdvert>Monte Seu Computador</S.TextAdvert>
       </S.ContainerAdverts>
       <S.ContainerParts>
-        <CardPieces currentCategory={currentCategory}/>
+        <CardPieces currentCategory={currentCategory} />
       </S.ContainerParts>
       <S.ContainerGrid>
-        <GridPieces currentCategory={currentCategory}/>
+        <GridPieces currentCategory={currentCategory} />
         <S.ContainerButtons>
           <S.SelectedButtonParts
             disabled={isButtonDisabled}
@@ -119,6 +146,8 @@ const Home: React.FC = () => {
                 handleOpenModal();
               }
             }}
+            isLastCategory={isLastCategory}
+            modalText={modalText}
           />
           <Progress value={progressValue} category={currentCategory} />
           {totalPrice > 0 && (
@@ -137,7 +166,14 @@ const Home: React.FC = () => {
           )}
         </S.ContainerButtons>
       </S.ContainerGrid>
-      <ModalPieces valueTotal={totalPrice} currentCategory={currentCategory} isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalPieces
+        isLastCategory={isLastCategory}
+        modalText={modalText}
+        valueTotal={totalPrice}
+        currentCategory={currentCategory}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </S.Container>
   );
 };
