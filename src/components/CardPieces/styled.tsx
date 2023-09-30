@@ -42,7 +42,7 @@ export const ContainerCard = styled.div<PropsCard>`
       ? "auto"
       : props.state === "disabled"
       ? "not-allowed"
-      : "pointer"};
+      : "auto"};
 `;
 
 export const ContainerIcon = styled.div`
