@@ -4,3 +4,8 @@ export function formatCurrency(value: number): string {
     currency: "BRL",
   }).format(value);
 }
+
+export  const areAllCategoriesPresent = (selectedItems: {}) => {
+  const categories = ['Processor', 'Motherboard', 'Memory', 'VideoCard', 'Storage'];
+  return categories.every(category => category in selectedItems);
+};
