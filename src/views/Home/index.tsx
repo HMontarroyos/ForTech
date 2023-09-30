@@ -146,7 +146,10 @@ const Home: React.FC = () => {
         <S.TextAdvert>Monte Seu Computador</S.TextAdvert>
       </S.ContainerAdverts>
       <S.ContainerParts>
-        <CardPieces currentCategory={currentCategory} />
+        <CardPieces
+          isLastCategory={isLastCategory}
+          currentCategory={currentCategory}
+        />
       </S.ContainerParts>
       <S.ContainerGrid>
         <GridPieces currentCategory={currentCategory} />

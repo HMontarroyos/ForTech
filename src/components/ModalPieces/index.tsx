@@ -1,5 +1,5 @@
 import { useSelectedItems } from "../../global/SelectedItemsContext";
-import { formatCurrency } from "../../utils";
+import { areAllCategoriesPresent, formatCurrency } from "../../utils";
 import * as S from "./styled";
 import { FaWindowClose } from "react-icons/fa";
 import { pieces } from "../../global/const";
@@ -23,10 +23,6 @@ function ModalPieces({
 }: ModalPiecesProps) {
   const { selectedItems } = useSelectedItems();
 
-  const areAllCategoriesPresent = () => {
-    const categories = ['Processor', 'Motherboard', 'Memory', 'VideoCard', 'Storage'];
-    return categories.every(category => category in selectedItems);
-  };
 
   if (!isOpen) return null;
 
@@ -37,7 +33,7 @@ function ModalPieces({
           <FaWindowClose />
         </S.CloseButton>
         <S.Title>Componentes Selecionados </S.Title>
-        {isLastCategory && areAllCategoriesPresent() && <S.Congratulations>Parabéns, você concluiu a seleção!</S.Congratulations>}
+        {isLastCategory && areAllCategoriesPresent(selectedItems) && <S.Congratulations>Parabéns, você concluiu a seleção!</S.Congratulations>}
         <>{console.log("SELECIONADOS MODAL", selectedItems)}</>
         <S.ContainerColumn>
           {Object.keys(selectedItems).map((category) => {
