@@ -8,10 +8,19 @@ interface ModalPiecesProps {
   isOpen: boolean;
   currentCategory: string;
   valueTotal: number;
+  isLastCategory: boolean;
+  modalText: string;
   onClose: () => void;
 }
 
-function ModalPieces({ isOpen, onClose, currentCategory, valueTotal }: ModalPiecesProps) {
+function ModalPieces({
+  isOpen,
+  onClose,
+  currentCategory,
+  valueTotal,
+  isLastCategory,
+  modalText,
+}: ModalPiecesProps) {
   const { selectedItems } = useSelectedItems();
 
   if (!isOpen) return null;
@@ -23,13 +32,14 @@ function ModalPieces({ isOpen, onClose, currentCategory, valueTotal }: ModalPiec
           <FaWindowClose />
         </S.CloseButton>
         <S.Title>Componentes Selecionados </S.Title>
-        <>
-        {console.log("SELECIONADOS MODAL", selectedItems)}
-        </>
+        {isLastCategory && <S.Congratulations>{modalText}</S.Congratulations>}
+        <>{console.log("SELECIONADOS MODAL", selectedItems)}</>
         <S.ContainerColumn>
-          {Object.keys(selectedItems).map(category => {
+          {Object.keys(selectedItems).map((category) => {
             const item = selectedItems[category];
-            const icon = pieces.find(piece => piece.category === category)?.icon;
+            const icon = pieces.find(
+              (piece) => piece.category === category
+            )?.icon;
             return (
               <S.ContainerPiece key={category}>
                 <S.ContainerImage>
@@ -41,16 +51,15 @@ function ModalPieces({ isOpen, onClose, currentCategory, valueTotal }: ModalPiec
               </S.ContainerPiece>
             );
           })}
-          <S.Divisor/>
+          <S.Divisor />
           <S.ContainerValue>
-          <S.Description>Valor Total</S.Description>
-          <S.Price>{formatCurrency(valueTotal)}</S.Price>
+            <S.Description>Valor Total</S.Description>
+            <S.Price>{formatCurrency(valueTotal)}</S.Price>
           </S.ContainerValue>
         </S.ContainerColumn>
       </S.Container>
     </S.ModalOverlay>
   );
 }
-
 
 export default ModalPieces;

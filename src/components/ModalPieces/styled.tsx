@@ -1,5 +1,18 @@
 import { darken, lighten } from "polished";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const pulse = keyframes`
+  0%, 100% {
+    font-size: 45px;
+  }
+
+  50% {
+    font-size: 50px;
+  }
+
+`;
+
+
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -16,11 +29,12 @@ export const ModalOverlay = styled.div`
 
 export const Container = styled.div`
   width: calc(100% - 400px);
-  height: 600px;
+  height: calc(100% - 200px);
   background-color: ${(props) => lighten(0.2, props.theme.colors.quartenary)};
   padding: 20px;
   border-radius: 8px;
   position: relative;
+  overflow-y: auto; 
 `;
 
 export const Title = styled.h1`
@@ -28,6 +42,18 @@ export const Title = styled.h1`
   color: ${(props) => props.theme.colors.tertiary};
   font-family: ${(props) => props.theme.fonts.text};
   font-size: 25px;
+`;
+
+export const Congratulations = styled.h1`
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: ${(props) => props.theme.colors.tertiary};
+  font-family: ${(props) => props.theme.fonts.text};
+  font-size: 35px;
+  text-align: center;
+  animation: ${pulse} 2s infinite; 
+  transition: font-size 0.3s ease-in-out;
 `;
 
 export const CloseButton = styled.button`
