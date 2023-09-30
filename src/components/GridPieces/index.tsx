@@ -5,7 +5,11 @@ import { Checkbox, Loading } from "../../components";
 import * as S from "./styled";
 import { useSelectedItems } from "../../global/SelectedItemsContext";
 
-function GridPieces() {
+interface GridPiecesProps {
+  currentCategory: string; // Adiciona a propriedade currentCategory
+}
+
+function GridPieces({ currentCategory }: GridPiecesProps) {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
   const { selectedItems, addSelectedItem, removeSelectedItem } =
     useSelectedItems();
@@ -17,7 +21,7 @@ function GridPieces() {
 
       if (isCurrentlyChecked) {
         delete newCheckedMap[index];
-        removeSelectedItem("Processor"); 
+        removeSelectedItem("Processor");
       } else {
         Object.keys(newCheckedMap).forEach((key: any) => {
           if (parseInt(key) !== index) {
@@ -25,7 +29,7 @@ function GridPieces() {
           }
         });
         newCheckedMap[index] = true;
-        addSelectedItem("Processor", processor); 
+        addSelectedItem("Processor", processor);
       }
       return newCheckedMap;
     });
@@ -33,29 +37,28 @@ function GridPieces() {
 
   const { parts } = useComputerParts();
 
-  if (!parts) {
+  if (!parts || !parts[currentCategory]) {
     return <Loading />;
   }
 
   return (
     <S.Container>
-      {parts &&
-        parts.Processor.map((processor, index) => (
-          <S.ContainerCard
-            key={index}
-            onClick={() => handleRadioCheck(index, processor)}
-            actived={checkedMap[index]}
-          >
-            <S.ContainerImage>
-              <Checkbox checked={checkedMap[index]} onClick={() => {}} />
-              <S.Image src={processor.image} alt={`Image ${processor.name}`} />
-            </S.ContainerImage>
-            <S.ContainerText>
-              <S.Title>{processor.name}</S.Title>
-              <S.Price>{formatCurrency(processor.price)}</S.Price>
-            </S.ContainerText>
-          </S.ContainerCard>
-        ))}
+      {parts[currentCategory].map((processor, index) => (
+        <S.ContainerCard
+          key={index}
+          onClick={() => handleRadioCheck(index, processor)}
+          actived={checkedMap[index]}
+        >
+          <S.ContainerImage>
+            <Checkbox checked={checkedMap[index]} onClick={() => {}} />
+            <S.Image src={processor.image} alt={`Image ${processor.name}`} />
+          </S.ContainerImage>
+          <S.ContainerText>
+            <S.Title>{processor.name}</S.Title>
+            <S.Price>{formatCurrency(processor.price)}</S.Price>
+          </S.ContainerText>
+        </S.ContainerCard>
+      ))}
     </S.Container>
   );
 }

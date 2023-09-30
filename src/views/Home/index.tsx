@@ -5,7 +5,7 @@ import {
   CardPieces,
   GridPieces,
   Progress,
-  ModalPieces
+  ModalPieces,
 } from "../../components";
 import { FaComputer } from "react-icons/fa6";
 import { BsCreditCard2Back } from "react-icons/bs";
@@ -17,6 +17,7 @@ const Home: React.FC = () => {
   const { selectedItems } = useSelectedItems();
   const { parts } = useComputerParts();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("Processor");
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -60,6 +61,19 @@ const Home: React.FC = () => {
 
   const isButtonDisabled = Object.keys(selectedItems).length === 0;
 
+  const handleNextCategory = () => {
+    if (parts) {
+      const categories = Object.keys(parts);
+      const currentIndex = categories.indexOf(currentCategory);
+
+      if (currentIndex < categories.length - 1) {
+        setCurrentCategory(categories[currentIndex + 1]);
+      }
+    } else {
+      return null;
+    }
+  };
+
   return (
     <S.Container>
       <S.ContainerAlert>
@@ -71,20 +85,23 @@ const Home: React.FC = () => {
         <S.TextAdvert>Monte Seu Computador</S.TextAdvert>
       </S.ContainerAdverts>
       <S.ContainerParts>
-        <CardPieces />
+        <CardPieces currentCategory={currentCategory}/>
       </S.ContainerParts>
       <S.ContainerGrid>
-        <GridPieces />
+        <GridPieces currentCategory={currentCategory}/>
         <S.ContainerButtons>
           <S.SelectedButtonParts
             disabled={isButtonDisabled}
-            onClick={handleOpenModal} 
+            onClick={handleOpenModal}
           >
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
           </S.SelectedButtonParts>
-          <ButtonProduct disabled={isButtonDisabled} onClick={()=> console.log("TESTE")}/>
-          <Progress value={progressValue} category={"Process"} />
+          <ButtonProduct
+            disabled={isButtonDisabled}
+            onClick={handleNextCategory}
+          />
+          <Progress value={progressValue} category={currentCategory} />
           {totalPrice > 0 && (
             <S.ContainerValueTotal>
               <S.TextValue>Valor Atual</S.TextValue>
