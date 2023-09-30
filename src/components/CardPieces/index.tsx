@@ -1,38 +1,39 @@
 import * as S from "./styled";
 import { pieces } from "../../global/const";
+import { AiOutlineCheck } from "react-icons/ai";
 
-function CardPieces() {
+interface CardPiecesProps {
+  currentCategory: string;
+}
+
+function CardPieces({ currentCategory }: CardPiecesProps) {
   return (
     <S.Container>
-      {/*       {pieces &&
-        pieces.map((piece, index) => (
-          <S.ContainerCard key={index}>
-            <S.ContainerIcon>
-              {piece.icon}
-            </S.ContainerIcon>
+      {pieces.map((piece, index) => {
+        let cardState: "actived" | "disabled" | "normal" = "normal";
+
+console.log("CURRENT CATEGORY", currentCategory)
+
+        if (piece.category === currentCategory) {
+          cardState = "actived";
+        } else if (
+          index > pieces.findIndex((item) => item.category === currentCategory)
+        ) {
+          cardState = "disabled";
+        }
+
+        return (
+          <S.ContainerCard key={index} state={cardState}>
+            {cardState === "normal" && (
+              <AiOutlineCheck
+                style={{ position: "absolute", fontSize: "30px", fontWeight: "bold" }}
+              />
+            )}
+            <S.ContainerIcon>{piece.icon}</S.ContainerIcon>
             <S.Title>{piece.name}</S.Title>
           </S.ContainerCard>
-        ))} */}
-      <S.ContainerCard actived>
-        <S.ContainerIcon>{pieces[0].icon}</S.ContainerIcon>
-        <S.Title>{pieces[0].name}</S.Title>
-      </S.ContainerCard>
-      <S.ContainerCard>
-        <S.ContainerIcon>{pieces[1].icon}</S.ContainerIcon>
-        <S.Title>{pieces[1].name}</S.Title>
-      </S.ContainerCard>
-      <S.ContainerCard disabled>
-        <S.ContainerIcon>{pieces[2].icon}</S.ContainerIcon>
-        <S.Title>{pieces[2].name}</S.Title>
-      </S.ContainerCard>
-      <S.ContainerCard disabled>
-        <S.ContainerIcon>{pieces[3].icon}</S.ContainerIcon>
-        <S.Title>{pieces[3].name}</S.Title>
-      </S.ContainerCard>
-      <S.ContainerCard disabled>
-        <S.ContainerIcon>{pieces[4].icon}</S.ContainerIcon>
-        <S.Title>{pieces[4].name}</S.Title>
-      </S.ContainerCard>
+        );
+      })}
     </S.Container>
   );
 }

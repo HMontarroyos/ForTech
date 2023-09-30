@@ -2,8 +2,7 @@ import { darken, lighten } from "polished";
 import styled from "styled-components";
 
 interface PropsCard {
-  actived?: boolean;
-  disabled?: boolean;
+  state: string;
 }
 
 export const Container = styled.div`
@@ -22,16 +21,16 @@ export const ContainerCard = styled.div<PropsCard>`
   display: flex;
   flex-direction: column;
   color: ${(props) =>
-    props.disabled
+    props.state === "disabled"
       ? darken(0.5, props.theme.colors.tertiary)
       : props.theme.colors.tertiary};
   background-color: ${(props) => {
-    if (props.actived) {
-      return props.theme.colors.primary;
-    } else if (props.disabled) {
+    if (props.state === "actived") {
+      return lighten(0.2, props.theme.colors.text)
+    } else if (props.state === "disabled") {
       return props.theme.colors.disabledText;
     } else {
-      return lighten(0.2, props.theme.colors.text);
+      return props.theme.colors.primary; 
     }
   }};
   border-radius: 5px;
@@ -39,7 +38,11 @@ export const ContainerCard = styled.div<PropsCard>`
   height: 150px;
   margin: 10px;
   cursor: ${(props) =>
-    props.actived ? "pointer" : props.disabled ? "not-allowed" : "auto"};
+    props.state === "actived"
+      ? "auto"
+      : props.state === "disabled"
+      ? "not-allowed"
+      : "pointer"};
 `;
 
 export const ContainerIcon = styled.div`
@@ -55,17 +58,3 @@ export const Title = styled.h2`
   font-size: 25px;
   font-family: ${(props) => props.theme.fonts.text};
 `;
-
-/* export const Link = styled.a`
-  text-decoration: none;
-  cursor: pointer;
-  color: ${(props) => props.theme.colors.text};
-  font-size: 26px;
-  font-family: ${(props) => props.theme.fonts.title};
-  font-weight: 300;
-  transition: color 0.3s;
-
-  &:hover {
-    color: ${(props) => lighten(0.2, props.theme.colors.text)};
-  }
-`; */
