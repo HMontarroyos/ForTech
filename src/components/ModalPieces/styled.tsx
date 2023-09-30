@@ -16,7 +16,7 @@ export const ModalOverlay = styled.div`
 
 export const Container = styled.div`
   width: calc(100% - 400px);
-  height: 500px;
+  height: 600px;
   background-color: ${(props) => lighten(0.2, props.theme.colors.quartenary)};
   padding: 20px;
   border-radius: 8px;
@@ -70,7 +70,6 @@ export const Description = styled.p`
   font-size: 18px;
   font-family: ${(props) => props.theme.fonts.text};
   color: ${(props) => props.theme.colors.tertiary};
-  
 `;
 
 export const Price = styled.p`
@@ -81,6 +80,20 @@ export const Price = styled.p`
 `;
 
 export const ContainerPiece = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;
+
+export const Divisor = styled.div`
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: ${(props) => darken(0.1, props.theme.colors.primary)};
+`;
+
+export const ContainerValue = styled.div`
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;

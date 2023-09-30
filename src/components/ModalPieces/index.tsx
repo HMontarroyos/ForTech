@@ -6,12 +6,13 @@ import { pieces } from "../../global/const";
 
 interface ModalPiecesProps {
   isOpen: boolean;
+  currentCategory: string;
+  valueTotal: number;
   onClose: () => void;
 }
 
-function ModalPieces({ isOpen, onClose }: ModalPiecesProps) {
+function ModalPieces({ isOpen, onClose, currentCategory, valueTotal }: ModalPiecesProps) {
   const { selectedItems } = useSelectedItems();
-  const processor = selectedItems["Processor"]; // Obtendo os detalhes do processador
 
   if (!isOpen) return null;
 
@@ -22,19 +23,34 @@ function ModalPieces({ isOpen, onClose }: ModalPiecesProps) {
           <FaWindowClose />
         </S.CloseButton>
         <S.Title>Componentes Selecionados </S.Title>
+        <>
+        {console.log("SELECIONADOS MODAL", selectedItems)}
+        </>
         <S.ContainerColumn>
-          <S.ContainerPiece>
-            <S.ContainerImage>
-            {pieces[0].icon}
-              <S.Image src={processor.image} alt={`Image do ${processor.name}`} />
-              <S.Description>{processor.name}</S.Description>
-            </S.ContainerImage>
-            <S.Price>{formatCurrency(processor.price)}</S.Price>
-          </S.ContainerPiece>
+          {Object.keys(selectedItems).map(category => {
+            const item = selectedItems[category];
+            const icon = pieces.find(piece => piece.category === category)?.icon;
+            return (
+              <S.ContainerPiece key={category}>
+                <S.ContainerImage>
+                  {icon}
+                  <S.Image src={item.image} alt={`Image do ${item.name}`} />
+                  <S.Description>{item.name}</S.Description>
+                </S.ContainerImage>
+                <S.Price>{formatCurrency(item.price)}</S.Price>
+              </S.ContainerPiece>
+            );
+          })}
+          <S.Divisor/>
+          <S.ContainerValue>
+          <S.Description>Valor Total</S.Description>
+          <S.Price>{formatCurrency(valueTotal)}</S.Price>
+          </S.ContainerValue>
         </S.ContainerColumn>
       </S.Container>
     </S.ModalOverlay>
   );
 }
+
 
 export default ModalPieces;
