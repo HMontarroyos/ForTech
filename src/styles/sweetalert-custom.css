@@ -1,0 +1,20 @@
+.swal2-popup {
+    background-color: #585F6F;
+    color: #FFFFFF; 
+    font-family: Sofia Sans Condensed, sans-serif; 
+
+  }
+
+  .swal2-title {
+    color: #FFFFFF;
+    font-family: Sofia Sans Condensed, sans-serif; 
+  }
+  
+  .swal2-text {
+    color: #FFFFFF;
+    font-family: Sofia Sans Condensed, sans-serif;
+  }
+
+  .swal2-actions button {
+    font-family: 'Sofia Sans Condensed', sans-serif;
+}
