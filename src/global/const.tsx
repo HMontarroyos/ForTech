@@ -7,6 +7,7 @@ import { FaMemory } from "react-icons/fa";
 export interface Pieces {
   name: string;
   icon: ReactElement;
+  category: string;
 }
 
 interface CategoryTexts {
@@ -21,22 +22,27 @@ interface CategoryTextsObject {
 export const pieces: Pieces[] = [
   {
     name: "Processador",
+    category: "Processor",
     icon: <GiProcessor />,
   },
   {
     name: "Placa Mãe",
+    category: "Motherboard",
     icon: <BsMotherboardFill />,
   },
   {
     name: "Memória Ram",
+    category: "Memory",
     icon: <FaMemory />,
   },
   {
     name: "Placa de Video",
+    category: "VideoCard",
     icon: <BiSolidMicrochip />,
   },
   {
     name: "HD/SSD",
+    category: "Storage",
     icon: <BsDeviceHddFill />,
   },
 ];
