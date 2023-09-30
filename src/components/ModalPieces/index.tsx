@@ -37,7 +37,7 @@ function ModalPieces({
           <FaWindowClose />
         </S.CloseButton>
         <S.Title>Componentes Selecionados </S.Title>
-        {isLastCategory && areAllCategoriesPresent() && <S.Congratulations>{modalText}</S.Congratulations>}
+        {isLastCategory && areAllCategoriesPresent() && <S.Congratulations>Parabéns, você concluiu a seleção!</S.Congratulations>}
         <>{console.log("SELECIONADOS MODAL", selectedItems)}</>
         <S.ContainerColumn>
           {Object.keys(selectedItems).map((category) => {
