@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useComputerParts } from "../../global/ComputerPartsContext";
 import { formatCurrency } from "../../utils";
 import { Checkbox, Loading } from "../../components";
@@ -21,7 +21,7 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
 
       if (isCurrentlyChecked) {
         delete newCheckedMap[index];
-        removeSelectedItem("Processor");
+        removeSelectedItem(currentCategory);
       } else {
         Object.keys(newCheckedMap).forEach((key: any) => {
           if (parseInt(key) !== index) {
@@ -29,13 +29,18 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
           }
         });
         newCheckedMap[index] = true;
-        addSelectedItem("Processor", processor);
+        addSelectedItem(currentCategory, processor);
       }
       return newCheckedMap;
     });
   };
 
   const { parts } = useComputerParts();
+
+  useEffect(() => {
+    // Reinicia o estado checkedMap quando a currentCategory muda
+    setCheckedMap({});
+  }, [currentCategory]);
 
   if (!parts || !parts[currentCategory]) {
     return <Loading />;

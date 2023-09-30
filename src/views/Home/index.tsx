@@ -18,6 +18,7 @@ const Home: React.FC = () => {
   const { parts } = useComputerParts();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("Processor");
+  const [isLastCategory, setIsLastCategory] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -74,6 +75,19 @@ const Home: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (parts) {
+      const categories = Object.keys(parts);
+      const currentIndex = categories.indexOf(currentCategory);
+  
+      setIsLastCategory(currentIndex === categories.length - 1);
+    }
+  }, [parts, currentCategory]);
+
+  const isCategoryEmpty = () => {
+    return !selectedItems[currentCategory];
+  };
+
   return (
     <S.Container>
       <S.ContainerAlert>
@@ -98,8 +112,13 @@ const Home: React.FC = () => {
             <p>Ver os Componentes Selecionados</p>
           </S.SelectedButtonParts>
           <ButtonProduct
-            disabled={isButtonDisabled}
-            onClick={handleNextCategory}
+            disabled={isButtonDisabled || isCategoryEmpty()}
+            onClick={() => {
+              handleNextCategory();
+              if (isLastCategory) {
+                handleOpenModal();
+              }
+            }}
           />
           <Progress value={progressValue} category={currentCategory} />
           {totalPrice > 0 && (
@@ -118,7 +137,7 @@ const Home: React.FC = () => {
           )}
         </S.ContainerButtons>
       </S.ContainerGrid>
-      <ModalPieces isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalPieces valueTotal={totalPrice} currentCategory={currentCategory} isOpen={isModalOpen} onClose={handleCloseModal} />
     </S.Container>
   );
 };
