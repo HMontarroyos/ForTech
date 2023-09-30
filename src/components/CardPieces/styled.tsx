@@ -6,6 +6,8 @@ interface PropsCard {
 }
 
 export const Container = styled.div`
+  flex-wrap: nowrap;
+	overflow-x: auto;
   display: flex;
   flex-direction: row;
   background-color: ${(props) => props.theme.colors.quartenary};
@@ -15,6 +17,10 @@ export const Container = styled.div`
   padding: 10px;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 577px) {
+    height: auto;
+  }
 `;
 
 export const ContainerCard = styled.div<PropsCard>`
@@ -43,6 +49,18 @@ export const ContainerCard = styled.div<PropsCard>`
       : props.state === "disabled"
       ? "not-allowed"
       : "auto"};
+
+      @media (max-width: 890px) {
+        width: 100px;
+        height: 100px;
+      }
+
+      @media (max-width: 577px) {
+        width: 80px;
+        height: 70px;
+      }
+
+
 `;
 
 export const ContainerIcon = styled.div`
@@ -51,10 +69,28 @@ export const ContainerIcon = styled.div`
   align-items: center;
   margin-top: 20px;
   font-size: 4rem;
+
+  @media (max-width: 890px) {
+    font-size: 2rem;
+  }
+
 `;
 
 export const Title = styled.h2`
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 25px;
   font-family: ${(props) => props.theme.fonts.text};
+
+  @media (max-width: 890px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 577px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 577px) {
+    display: none;
+  }
+
 `;

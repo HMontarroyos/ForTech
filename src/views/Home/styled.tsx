@@ -8,13 +8,22 @@ interface ButtonProps {
 
 const pulse = keyframes`
   0%, 100% {
-    font-size: 45px;
+    font-size: 45px; 
   }
 
   50% {
-    font-size: 50px;
+    font-size: 50px; 
   }
 
+  @media (max-width: 370px) {
+    0%, 100% {
+      font-size: 20px; 
+    }
+
+    50% {
+      font-size: 30px; 
+    }
+  }
 `;
 
 export const Container = styled.div``;
@@ -26,12 +35,24 @@ export const ContainerAlert = styled.div`
   align-items: center;
   text-align: center;
   background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
-  height: 60px;
+  height: 80px;
 `;
 export const Title = styled.h1`
   color: ${(props) => props.theme.colors.secondary};
   font-size: 40px;
   font-family: ${(props) => props.theme.fonts.text};
+
+  @media (max-width: 1045px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 790px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 315px) {
+    font-size: 18px;
+  }
 `;
 
 export const ContainerAdverts = styled.div`
@@ -58,11 +79,11 @@ export const ContainerAdverts = styled.div`
     left: 0;
   }
 `;
+
 export const TextAdvert = styled.h1`
-    color: ${(props) => props.theme.colors.quartenary}
-    font-size: 45px;
+    color: ${(props) => props.theme.colors.quartenary};
     font-family: ${(props) => props.theme.fonts.logo};
-    animation: ${pulse} 2s infinite; 
+   /*  animation: ${pulse} 2s infinite;  */
     transition: font-size 0.3s ease-in-out;
 `;
 
