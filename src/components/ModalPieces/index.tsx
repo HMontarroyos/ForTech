@@ -23,6 +23,11 @@ function ModalPieces({
 }: ModalPiecesProps) {
   const { selectedItems } = useSelectedItems();
 
+  const areAllCategoriesPresent = () => {
+    const categories = ['Processor', 'Motherboard', 'Memory', 'VideoCard', 'Storage'];
+    return categories.every(category => category in selectedItems);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -32,7 +37,7 @@ function ModalPieces({
           <FaWindowClose />
         </S.CloseButton>
         <S.Title>Componentes Selecionados </S.Title>
-        {isLastCategory && <S.Congratulations>{modalText}</S.Congratulations>}
+        {isLastCategory && areAllCategoriesPresent() && <S.Congratulations>{modalText}</S.Congratulations>}
         <>{console.log("SELECIONADOS MODAL", selectedItems)}</>
         <S.ContainerColumn>
           {Object.keys(selectedItems).map((category) => {
