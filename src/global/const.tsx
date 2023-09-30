@@ -49,23 +49,23 @@ export const pieces: Pieces[] = [
 
 export const categoryTexts: CategoryTextsObject = {
   Processor: {
-    title: "Estamos no Início",
-    text: "Selecione o Processador",
+    title: "Potência e Desempenho",
+    text: "Escolha o Processador",
   },
   Motherboard: {
-    title: "Outro Título",
-    text: "Outro Texto para Motherboard",
+    title: "Base do seu Sistema",
+    text: "Encontre a Placa-Mãe",
   },
   Memory: {
-    title: "Título para Memória",
-    text: "Texto para Memória",
+    title: "Memória Eficiente  ",
+    text: "Escolha a Memória RAM",
   },
   VideoCard: {
-    title: "Título para Placa de Vídeo",
-    text: "Texto para Placa de Vídeo",
+    title: "Gráficos Superiores",
+    text: "Escolha a Placa de Vídeo",
   },
   Storage: {
-    title: "Título para Armazenamento",
-    text: "Texto para Armazenamento",
+    title: "Mais Armazenamento",
+    text: "Escolha seu SSD/HD",
   },
 };
