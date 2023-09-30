@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
+import "../../styles/sweetalert-custom.css";
 import {
   ButtonProduct,
   CardPieces,
@@ -12,6 +13,8 @@ import { BsCreditCard2Back } from "react-icons/bs";
 import { useComputerParts } from "../../global/ComputerPartsContext";
 import { formatCurrency } from "../../utils";
 import { useSelectedItems } from "../../global/SelectedItemsContext";
+import Swal from "sweetalert2";
+import { MdOutlineWarningAmber } from "react-icons/md";
 
 const Home: React.FC = () => {
   const { selectedItems } = useSelectedItems();
@@ -115,6 +118,23 @@ const Home: React.FC = () => {
     return !selectedItems[currentCategory];
   };
 
+  const resetConfig = () => {
+    Swal.fire({
+      title: "Deseja montar uma nova configuração?",
+      text: "Caso deseje prosseguir isso irá apagar a configuração atual e recarregar a página",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#00AD6F",
+      cancelButtonColor: "#A3020D",
+      confirmButtonText: "Desejo Prosseguir",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
+  };
+
   return (
     <S.Container>
       <S.ContainerAlert>
@@ -131,13 +151,10 @@ const Home: React.FC = () => {
       <S.ContainerGrid>
         <GridPieces currentCategory={currentCategory} />
         <S.ContainerButtons>
-          <S.SelectedButtonParts
-            disabled={isButtonDisabled}
-            onClick={handleOpenModal}
-          >
+          <S.Button disabled={isButtonDisabled} onClick={handleOpenModal}>
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
-          </S.SelectedButtonParts>
+          </S.Button>
           <ButtonProduct
             disabled={isButtonDisabled || isCategoryEmpty()}
             onClick={() => {
@@ -149,6 +166,12 @@ const Home: React.FC = () => {
             isLastCategory={isLastCategory}
             modalText={modalText}
           />
+          {isLastCategory && !isCategoryEmpty() && (
+            <S.Button resetConfig onClick={resetConfig}>
+              <MdOutlineWarningAmber />
+              <p>Montar Nova Configuração</p>
+            </S.Button>
+          )}
           <Progress value={progressValue} category={currentCategory} />
           {totalPrice > 0 && (
             <S.ContainerValueTotal>

@@ -2,6 +2,10 @@ import styled, { keyframes } from "styled-components";
 import { HorizontalBottom } from "../../assets/images/svg";
 import { darken, lighten } from "polished";
 
+interface ButtonProps {
+  resetConfig?: boolean;
+}
+
 const pulse = keyframes`
   0%, 100% {
     font-size: 45px;
@@ -81,28 +85,36 @@ export const ContainerGrid = styled.div`
 
 export const ContainerButtons = styled.div``;
 
-export const SelectedButtonParts = styled.button`
-  font-size: 18px;
+export const Button = styled.button<ButtonProps>`
+  font-size: ${(props) => (props.resetConfig ? "20px" : "18px")};
   font-family: ${(props) => props.theme.fonts.text};
   color: ${(props) => props.theme.colors.tertiary};
   font-weight: bold;
   display: flex;
   flex-direction: row;
-  background-color: ${(props) => lighten(0.2, props.theme.colors.text)};
+  background-color: ${(props) =>
+    lighten(
+      props.resetConfig ? 0.2 : 0.2,
+      props.theme.colors[props.resetConfig ? "alert" : "text"]
+    )};
+  height: ${(props) => (props.resetConfig ? "80px" : "30px")};
+  width: 287px;
   border-radius: 5px;
   align-items: center;
-  height: 30px;
+  margin-top: ${(props) => (props.resetConfig ? "10px" : "0")};
+  margin-bottom: ${(props) => (props.resetConfig ? "10px" : "0")};
   margin-right: 30px;
   cursor: pointer;
   padding: 20px;
 
   &:hover {
-    background-color: ${(props) => lighten(0.1, props.theme.colors.text)};
+    background-color: ${(props) =>
+      lighten(0.1, props.theme.colors[props.resetConfig ? "alert" : "text"])};
   }
 
   &:disabled {
     background-color: ${(props) => props.theme.colors.disabledText};
-    color: ${(props) => darken(0.5, props.theme.colors.tertiary)};
+    color: ${(props) => props.theme.colors.tertiary};
     cursor: not-allowed;
   }
 
