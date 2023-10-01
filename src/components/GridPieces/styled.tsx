@@ -16,6 +16,12 @@ export const Container = styled.div`
   padding: 10px;
   align-items: center;
   margin-left: 30px;
+
+  @media (max-width: 637px) {
+    margin-top: 20px;
+    flex-direction: column-reverse;
+    margin-left: 0;
+  }
 `;
 
 export const ContainerCard = styled.div<PropsCard>`

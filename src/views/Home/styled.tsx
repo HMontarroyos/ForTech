@@ -102,6 +102,11 @@ export const ContainerGrid = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 637px) {
+    flex-direction: column-reverse;
+    margin-left: 30px;
+  }
 `;
 
 export const ContainerButtons = styled.div``;
