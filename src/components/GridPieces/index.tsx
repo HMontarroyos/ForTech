@@ -11,7 +11,39 @@ interface GridPiecesProps {
 
 function GridPieces({ currentCategory }: GridPiecesProps) {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
-  const { addSelectedItem, removeSelectedItem } = useSelectedItems();
+  const { addSelectedItem, removeSelectedItem, selectedItems } = useSelectedItems();
+
+
+  const filteringRules = () => {
+      console.log("ITENS SELECIONANDOS", selectedItems[currentCategory])
+      
+    //"Placa Mãe AMD"
+
+    console.log("PARTS", parts && parts[currentCategory])
+/*    
+[
+    {
+        "name": "Placa Mãe Razor",
+        "image": "./images/motherboard/razor.png",
+        "price": 999.89
+    },
+    {
+        "name": "Placa Mãe AMD",
+        "image": "./images/motherboard/amd.png",
+        "price": 789.68
+    },
+    {
+        "name": "Placa Mãe Intel",
+        "image": "./images/motherboard/intel.png",
+        "price": 987.54
+    }
+]
+
+*/
+
+
+  }
+
 
   const handleRadioCheck = (index: number, category: any) => {
     setCheckedMap((prevState) => {
@@ -46,6 +78,9 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
 
   return (
     <S.Container>
+      <>   
+      {filteringRules()}
+      </>
       {parts[currentCategory].map((category, index) => (
         <S.ContainerCard
           key={index}

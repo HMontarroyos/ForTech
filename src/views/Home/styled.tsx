@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { HorizontalBottom } from "../../assets/images/svg";
-import { lighten } from "polished";
+import { darken, lighten } from "polished";
 
 interface ButtonProps {
   resetConfig?: boolean;
@@ -154,8 +154,9 @@ export const Button = styled.button<ButtonProps>`
 
   &:disabled {
     background-color: ${(props) => props.theme.colors.disabledText};
-    color: ${(props) => props.theme.colors.tertiary};
+    color: ${(props) => darken(0.5, props.theme.colors.tertiary)};
     cursor: not-allowed;
+    
   }
 
   p {
