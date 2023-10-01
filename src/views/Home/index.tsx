@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import "../../styles/sweetalert-custom.css";
+import Swal from "sweetalert2";
 import {
   ButtonProduct,
   CardPieces,
@@ -9,19 +10,20 @@ import {
   ModalPieces,
 } from "../../components";
 import { FaComputer } from "react-icons/fa6";
+import { MdOutlineWarningAmber } from "react-icons/md";
 import { BsCreditCard2Back } from "react-icons/bs";
 import { useComputerParts } from "../../context/ComputerPartsContext";
-import { formatCurrency } from "../../utils";
 import { useSelectedItems } from "../../context/SelectedItemsContext";
-import Swal from "sweetalert2";
-import { MdOutlineWarningAmber } from "react-icons/md";
+import { formatCurrency } from "../../utils";
 
 const Home: React.FC = () => {
-  const { selectedItems } = useSelectedItems();
-  const { parts } = useComputerParts();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("Processor");
   const [isLastCategory, setIsLastCategory] = useState(false);
+  const [modalText, setModalText] = useState("Componentes Selecionados");
+
+  const { selectedItems } = useSelectedItems();
+  const { parts } = useComputerParts();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -48,10 +50,6 @@ const Home: React.FC = () => {
 
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice);
 
-  useEffect(() => {
-    setTotalPrice(calculateTotalPrice());
-  }, [selectedItems, parts]);
-
   const calculateProgress = () => {
     if (parts && selectedItems) {
       let totalCategories = Object.keys(parts).length;
@@ -64,41 +62,6 @@ const Home: React.FC = () => {
   const progressValue = calculateProgress();
 
   const isButtonDisabled = Object.keys(selectedItems).length === 0;
-
-  /* const handleNextCategory = () => {
-    if (parts) {
-      const categories = Object.keys(parts);
-      const currentIndex = categories.indexOf(currentCategory);
-
-      if (currentIndex < categories.length - 1) {
-        setCurrentCategory(categories[currentIndex + 1]);
-      }
-    } else {
-      return null;
-    }
-  };
-
-  useEffect(() => {
-    if (parts) {
-      const categories = Object.keys(parts);
-      const currentIndex = categories.indexOf(currentCategory);
-  
-      setIsLastCategory(currentIndex === categories.length - 1);
-    }
-  }, [parts, currentCategory]);
-
- */
-
-  const [modalText, setModalText] = useState("Componentes Selecionados");
-
-  useEffect(() => {
-    if (parts) {
-      const categories = Object.keys(parts);
-      const currentIndex = categories.indexOf(currentCategory);
-
-      setIsLastCategory(currentIndex === categories.length - 1);
-    }
-  }, [parts, currentCategory]);
 
   const handleNextCategory = () => {
     if (parts) {
@@ -135,6 +98,19 @@ const Home: React.FC = () => {
     });
   };
 
+  useEffect(() => {
+    setTotalPrice(calculateTotalPrice());
+  }, [selectedItems, parts]);
+
+  useEffect(() => {
+    if (parts) {
+      const categories = Object.keys(parts);
+      const currentIndex = categories.indexOf(currentCategory);
+
+      setIsLastCategory(currentIndex === categories.length - 1);
+    }
+  }, [parts, currentCategory]);
+
   return (
     <S.Container>
       <S.ContainerAlert>
@@ -153,7 +129,7 @@ const Home: React.FC = () => {
       </S.ContainerParts>
       <S.ContainerGrid>
         <GridPieces currentCategory={currentCategory} />
-        <S.ContainerButtons>
+        <div>
           <S.Button disabled={isButtonDisabled} onClick={handleOpenModal}>
             <FaComputer />
             <p>Ver os Componentes Selecionados</p>
@@ -190,7 +166,7 @@ const Home: React.FC = () => {
               </S.ContainerTextValue>
             </S.ContainerValueTotal>
           )}
-        </S.ContainerButtons>
+        </div>
       </S.ContainerGrid>
       <ModalPieces
         isLastCategory={isLastCategory}

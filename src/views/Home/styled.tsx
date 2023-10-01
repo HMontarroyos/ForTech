@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { HorizontalBottom } from "../../assets/images/svg";
-import { darken, lighten } from "polished";
+import { lighten } from "polished";
 
 interface ButtonProps {
   resetConfig?: boolean;
@@ -92,16 +92,15 @@ export const ContainerAdverts = styled.div`
 `;
 
 export const TextAdvert = styled.h1`
-    color: ${(props) => props.theme.colors.quartenary};
-    font-family: ${(props) => props.theme.fonts.logo};
-    animation: ${pulse} 2s infinite;
+  color: ${(props) => props.theme.colors.quartenary};
+  font-family: ${(props) => props.theme.fonts.logo};
+  animation: ${pulse} 2s infinite;
+  transition: font-size 0.3s ease-in-out;
+
+  @media (max-width: 370px) {
+    animation: ${pulseMobile} 2s infinite;
     transition: font-size 0.3s ease-in-out;
-
-    @media (max-width: 370px) {
-      animation: ${pulseMobile} 2s infinite;
-      transition: font-size 0.3s ease-in-out;
-
-    }
+  }
 `;
 
 export const ContainerParts = styled.div`
@@ -125,8 +124,6 @@ export const ContainerGrid = styled.div`
     margin-left: 30px;
   }
 `;
-
-export const ContainerButtons = styled.div``;
 
 export const Button = styled.button<ButtonProps>`
   font-size: ${(props) => (props.resetConfig ? "20px" : "18px")};
