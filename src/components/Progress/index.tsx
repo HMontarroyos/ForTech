@@ -7,7 +7,7 @@ interface ProgressProps {
 }
 
 function Progress({ value, category }: ProgressProps): JSX.Element {
-  const texts = categoryTexts[category] || categoryTexts["Processor"];
+  const texts = categoryTexts[category] || categoryTexts["Motherboard"];
 
   return (
     <S.Container>

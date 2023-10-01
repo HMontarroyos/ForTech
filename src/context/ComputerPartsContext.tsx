@@ -7,8 +7,8 @@ interface Part {
 }
 
 interface ComputerParts {
-  Processor: Part[];
   Motherboard: Part[];
+  Processor: Part[];
   Memory: Part[];
   VideoCard: Part[];
   Storage: Part[];

@@ -7,8 +7,8 @@ export function formatCurrency(value: number): string {
 
 export const areAllCategoriesPresent = (selectedItems: {}) => {
   const categories = [
-    "Processor",
     "Motherboard",
+    "Processor",
     "Memory",
     "VideoCard",
     "Storage",

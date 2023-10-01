@@ -21,14 +21,14 @@ interface CategoryTextsObject {
 
 export const pieces: Pieces[] = [
   {
-    name: "Processador",
-    category: "Processor",
-    icon: <GiProcessor />,
-  },
-  {
     name: "Placa Mãe",
     category: "Motherboard",
     icon: <BsMotherboardFill />,
+  },
+  {
+    name: "Processador",
+    category: "Processor",
+    icon: <GiProcessor />,
   },
   {
     name: "Memória Ram",

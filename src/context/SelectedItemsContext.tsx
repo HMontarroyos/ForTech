@@ -47,6 +47,5 @@ export const useSelectedItems = () => {
       "useSelectedItems must be used within a SelectedItemsProvider"
     );
   }
-  console.log("CONTEXT", context.selectedItems)
   return context;
 };

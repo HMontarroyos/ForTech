@@ -18,7 +18,7 @@ import { formatCurrency } from "../../utils";
 
 const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState("Processor");
+  const [currentCategory, setCurrentCategory] = useState("Motherboard");
   const [isLastCategory, setIsLastCategory] = useState(false);
   const [modalText, setModalText] = useState("Componentes Selecionados");
 

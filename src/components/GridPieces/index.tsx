@@ -13,7 +13,7 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
   const { addSelectedItem, removeSelectedItem } = useSelectedItems();
 
-  const handleRadioCheck = (index: number, processor: any) => {
+  const handleRadioCheck = (index: number, category: any) => {
     setCheckedMap((prevState) => {
       const newCheckedMap = { ...prevState };
       const isCurrentlyChecked = newCheckedMap[index];
@@ -28,7 +28,7 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
           }
         });
         newCheckedMap[index] = true;
-        addSelectedItem(currentCategory, processor);
+        addSelectedItem(currentCategory, category);
       }
       return newCheckedMap;
     });

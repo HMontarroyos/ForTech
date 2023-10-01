@@ -1,4 +1,21 @@
 {
+  "Motherboard": [
+    {
+      "name": "Placa Mãe Razor",
+      "image": "./images/motherboard/razor.png",
+      "price": 999.89
+    },
+    {
+      "name": "Placa Mãe AMD",
+      "image": "./images/motherboard/amd.png",
+      "price": 789.68
+    },
+    {
+      "name": "Placa Mãe Intel",
+      "image": "./images/motherboard/intel.png",
+      "price": 987.54
+    }
+  ],
   "Processor": [
     {
       "name": "Processador Intel Core i3",
@@ -19,23 +36,6 @@
       "name": "Processador Intel Core i9",
       "image": "./images/processor/i9.png",
       "price": 1979.0
-    }
-  ],
-  "Motherboard": [
-    {
-      "name": "Placa Mãe Razor",
-      "image": "./images/motherboard/razor.png",
-      "price": 999.89
-    },
-    {
-      "name": "Placa Mãe AMD",
-      "image": "./images/motherboard/amd.png",
-      "price": 789.68
-    },
-    {
-      "name": "Placa Mãe Intel",
-      "image": "./images/motherboard/intel.png",
-      "price": 987.54
     }
   ],
   "Memory": [
