@@ -194,9 +194,7 @@ const Home: React.FC = () => {
       </S.ContainerGrid>
       <ModalPieces
         isLastCategory={isLastCategory}
-        modalText={modalText}
         valueTotal={totalPrice}
-        currentCategory={currentCategory}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />

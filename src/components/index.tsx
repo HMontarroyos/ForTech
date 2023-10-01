@@ -17,5 +17,5 @@ export {
   ButtonProduct,
   Progress,
   Checkbox,
-  ModalPieces
+  ModalPieces,
 };

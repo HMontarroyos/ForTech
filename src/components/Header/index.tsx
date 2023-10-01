@@ -8,7 +8,7 @@ function Header() {
         <S.Navigation>
           <S.LinkRedirect to={"/"}>
             <S.ContainerLogo>
-              <FaLaptopCode/>
+              <FaLaptopCode />
               <S.TextLogo>ForTech</S.TextLogo>
             </S.ContainerLogo>
           </S.LinkRedirect>

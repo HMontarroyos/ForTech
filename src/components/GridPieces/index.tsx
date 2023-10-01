@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
+import * as S from "./styled";
 import { useComputerParts } from "../../global/ComputerPartsContext";
+import { useSelectedItems } from "../../global/SelectedItemsContext";
 import { formatCurrency } from "../../utils";
 import { Checkbox, Loading } from "../../components";
-import * as S from "./styled";
-import { useSelectedItems } from "../../global/SelectedItemsContext";
 
 interface GridPiecesProps {
-  currentCategory: string; // Adiciona a propriedade currentCategory
+  currentCategory: string;
 }
 
 function GridPieces({ currentCategory }: GridPiecesProps) {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
-  const { selectedItems, addSelectedItem, removeSelectedItem } =
-    useSelectedItems();
+  const { addSelectedItem, removeSelectedItem } = useSelectedItems();
 
   const handleRadioCheck = (index: number, processor: any) => {
     setCheckedMap((prevState) => {
@@ -38,7 +37,6 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
   const { parts } = useComputerParts();
 
   useEffect(() => {
-    // Reinicia o estado checkedMap quando a currentCategory muda
     setCheckedMap({});
   }, [currentCategory]);
 
@@ -48,19 +46,19 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
 
   return (
     <S.Container>
-      {parts[currentCategory].map((processor, index) => (
+      {parts[currentCategory].map((category, index) => (
         <S.ContainerCard
           key={index}
-          onClick={() => handleRadioCheck(index, processor)}
+          onClick={() => handleRadioCheck(index, category)}
           actived={checkedMap[index]}
         >
           <S.ContainerImage>
             <Checkbox checked={checkedMap[index]} onClick={() => {}} />
-            <S.Image src={processor.image} alt={`Image ${processor.name}`} />
+            <S.Image src={category.image} alt={`Image ${category.name}`} />
           </S.ContainerImage>
           <S.ContainerText>
-            <S.Title>{processor.name}</S.Title>
-            <S.Price>{formatCurrency(processor.price)}</S.Price>
+            <S.Title>{category.name}</S.Title>
+            <S.Price>{formatCurrency(category.price)}</S.Price>
           </S.ContainerText>
         </S.ContainerCard>
       ))}

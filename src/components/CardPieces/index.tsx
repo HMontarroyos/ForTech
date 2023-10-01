@@ -1,8 +1,8 @@
 import * as S from "./styled";
-import { pieces } from "../../global/const";
 import { AiOutlineCheck } from "react-icons/ai";
-import { areAllCategoriesPresent } from "../../utils";
 import { useSelectedItems } from "../../global/SelectedItemsContext";
+import { pieces } from "../../global/const";
+import { areAllCategoriesPresent } from "../../utils";
 
 interface CardPiecesProps {
   currentCategory: string;
@@ -17,8 +17,6 @@ function CardPieces({ currentCategory, isLastCategory }: CardPiecesProps) {
     <S.Container>
       {pieces.map((piece, index) => {
         let cardState: "actived" | "disabled" | "normal" = "normal";
-
-        console.log("CURRENT CATEGORY", currentCategory);
 
         if (piece.category === currentCategory) {
           cardState = "actived";

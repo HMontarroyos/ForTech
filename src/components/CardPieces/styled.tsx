@@ -7,7 +7,7 @@ interface PropsCard {
 
 export const Container = styled.div`
   flex-wrap: nowrap;
-	overflow-x: auto;
+  overflow-x: auto;
   display: flex;
   flex-direction: row;
   background-color: ${(props) => props.theme.colors.quartenary};
@@ -32,11 +32,11 @@ export const ContainerCard = styled.div<PropsCard>`
       : props.theme.colors.tertiary};
   background-color: ${(props) => {
     if (props.state === "actived") {
-      return lighten(0.2, props.theme.colors.text)
+      return lighten(0.2, props.theme.colors.text);
     } else if (props.state === "disabled") {
       return props.theme.colors.disabledText;
     } else {
-      return props.theme.colors.primary; 
+      return props.theme.colors.primary;
     }
   }};
   border-radius: 5px;
@@ -50,17 +50,15 @@ export const ContainerCard = styled.div<PropsCard>`
       ? "not-allowed"
       : "auto"};
 
-      @media (max-width: 890px) {
-        width: 100px;
-        height: 100px;
-      }
+  @media (max-width: 890px) {
+    width: 100px;
+    height: 100px;
+  }
 
-      @media (max-width: 577px) {
-        width: 80px;
-        height: 70px;
-      }
-
-
+  @media (max-width: 577px) {
+    width: 80px;
+    height: 70px;
+  }
 `;
 
 export const ContainerIcon = styled.div`
@@ -73,7 +71,6 @@ export const ContainerIcon = styled.div`
   @media (max-width: 890px) {
     font-size: 2rem;
   }
-
 `;
 
 export const Title = styled.h2`
@@ -92,5 +89,4 @@ export const Title = styled.h2`
   @media (max-width: 577px) {
     display: none;
   }
-
 `;
