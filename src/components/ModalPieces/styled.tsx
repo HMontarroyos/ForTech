@@ -12,6 +12,17 @@ const pulse = keyframes`
 
 `;
 
+const pulseMobile = keyframes`
+  0%, 100% {
+    font-size: 25px;
+  }
+
+  50% {
+    font-size: 35px;
+  }
+
+`;
+
 
 
 export const ModalOverlay = styled.div`
@@ -35,6 +46,12 @@ export const Container = styled.div`
   border-radius: 8px;
   position: relative;
   overflow-y: auto; 
+
+  @media (max-width: 850px) {
+    width: calc(100% - 60px);
+  }
+
+
 `;
 
 export const Title = styled.h1`
@@ -54,6 +71,14 @@ export const Congratulations = styled.h1`
   text-align: center;
   animation: ${pulse} 2s infinite; 
   transition: font-size 0.3s ease-in-out;
+
+  @media (max-width: 850px) {
+    animation: ${pulseMobile} 2s infinite; 
+    transition: font-size 0.3s ease-in-out;
+  }
+
+
+
 `;
 
 export const CloseButton = styled.button`
@@ -69,6 +94,10 @@ export const CloseButton = styled.button`
   &:hover {
     color: ${(props) => darken(0.1, props.theme.colors.alert)};
   }
+
+  @media (max-width: 850px) {
+    font-size: 35px;
+  }
 `;
 
 export const ContainerColumn = styled.div`
@@ -76,6 +105,10 @@ export const ContainerColumn = styled.div`
   flex-direction: column;
   padding: 20px;
   margin-top: 40px;
+
+  @media (max-width: 850px) {
+    padding: 0px;
+  }
 `;
 
 export const ContainerImage = styled.div`

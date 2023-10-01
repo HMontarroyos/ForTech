@@ -26,6 +26,17 @@ const pulse = keyframes`
   }
 `;
 
+const pulseMobile = keyframes`
+  0%, 100% {
+    font-size: 20px; 
+  }
+
+  50% {
+    font-size: 30px; 
+  }
+
+`;
+
 export const Container = styled.div``;
 
 export const ContainerAlert = styled.div`
@@ -83,8 +94,14 @@ export const ContainerAdverts = styled.div`
 export const TextAdvert = styled.h1`
     color: ${(props) => props.theme.colors.quartenary};
     font-family: ${(props) => props.theme.fonts.logo};
-   /*  animation: ${pulse} 2s infinite;  */
+    animation: ${pulse} 2s infinite;
     transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: 370px) {
+      animation: ${pulseMobile} 2s infinite;
+      transition: font-size 0.3s ease-in-out;
+
+    }
 `;
 
 export const ContainerParts = styled.div`

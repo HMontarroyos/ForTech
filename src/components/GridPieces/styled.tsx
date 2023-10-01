@@ -20,6 +20,7 @@ export const Container = styled.div`
   @media (max-width: 637px) {
     margin-top: 20px;
     flex-direction: column-reverse;
+    width: 267px;
     margin-left: 0;
   }
 `;
