@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./styled";
-import Lottie from "react-lottie";
 import { NotFoundImage } from "../../assets/images";
 
 const NotFound: React.FC = () => {
