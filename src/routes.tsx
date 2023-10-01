@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes as Router, Route } from "react-router-dom";
 
-import { Footer, Header, Loading } from "./components";
+import { Header, Loading } from "./components";
 import { Home, NotFound } from "./views";
 
 const Routes: React.FC = () => {
@@ -13,7 +13,6 @@ const Routes: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Router>
-        {/* <Footer/> */}
       </Suspense>
     </BrowserRouter>
   );
