@@ -21,7 +21,7 @@ export const ContainerLogo = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 35px;
+  font-size: 40px;
   color: ${(props) => props.theme.colors.tertiary};
   font-family: ${(props) => props.theme.fonts.logo};
   transition: color 0.3s;

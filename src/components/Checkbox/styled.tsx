@@ -18,5 +18,5 @@ export const CheckboxContainer = styled.div`
 
 export const CheckIcon = styled.p`
   font-size: 18px;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.secondary};
 `;

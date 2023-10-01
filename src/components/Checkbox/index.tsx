@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./styled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FaCheck } from "react-icons/fa";
 
 interface CheckboxProps {
   checked: boolean;
@@ -11,11 +10,13 @@ interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps> = ({ checked, onClick }) => {
   return (
     <S.CheckboxContainer onClick={onClick}>
-      {checked && <S.CheckIcon><FontAwesomeIcon icon={faCheck} color={"#80FF00"} /></S.CheckIcon>}
+      {checked && (
+        <S.CheckIcon>
+          <FaCheck />
+        </S.CheckIcon>
+      )}
     </S.CheckboxContainer>
   );
 };
-
-
 
 export default Checkbox;
