@@ -1,6 +1,6 @@
 import * as S from "./styled";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useSelectedItems } from "../../global/SelectedItemsContext";
+import { useSelectedItems } from "../../context/SelectedItemsContext";
 import { pieces } from "../../global/const";
 import { areAllCategoriesPresent } from "../../utils";
 

@@ -5,7 +5,13 @@ export function formatCurrency(value: number): string {
   }).format(value);
 }
 
-export  const areAllCategoriesPresent = (selectedItems: {}) => {
-  const categories = ['Processor', 'Motherboard', 'Memory', 'VideoCard', 'Storage'];
-  return categories.every(category => category in selectedItems);
+export const areAllCategoriesPresent = (selectedItems: {}) => {
+  const categories = [
+    "Processor",
+    "Motherboard",
+    "Memory",
+    "VideoCard",
+    "Storage",
+  ];
+  return categories.every((category) => category in selectedItems);
 };

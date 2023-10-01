@@ -1,8 +1,8 @@
 import Routes from "./routes";
 import { ThemeProvider } from "styled-components";
-import { ComputerPartsProvider } from "./global/ComputerPartsContext";
+import { ComputerPartsProvider } from "./context/ComputerPartsContext";
 import { Theme, ThemeType } from "../src/styles/Theme";
-import { SelectedItemsProvider } from "./global/SelectedItemsContext";
+import { SelectedItemsProvider } from "./context/SelectedItemsContext";
 
 function App(): JSX.Element {
   return (

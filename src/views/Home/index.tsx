@@ -10,9 +10,9 @@ import {
 } from "../../components";
 import { FaComputer } from "react-icons/fa6";
 import { BsCreditCard2Back } from "react-icons/bs";
-import { useComputerParts } from "../../global/ComputerPartsContext";
+import { useComputerParts } from "../../context/ComputerPartsContext";
 import { formatCurrency } from "../../utils";
-import { useSelectedItems } from "../../global/SelectedItemsContext";
+import { useSelectedItems } from "../../context/SelectedItemsContext";
 import Swal from "sweetalert2";
 import { MdOutlineWarningAmber } from "react-icons/md";
 

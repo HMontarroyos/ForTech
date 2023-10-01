@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as S from "./styled";
-import { useComputerParts } from "../../global/ComputerPartsContext";
-import { useSelectedItems } from "../../global/SelectedItemsContext";
+import { useComputerParts } from "../../context/ComputerPartsContext";
+import { useSelectedItems } from "../../context/SelectedItemsContext";
 import { formatCurrency } from "../../utils";
 import { Checkbox, Loading } from "../../components";
 

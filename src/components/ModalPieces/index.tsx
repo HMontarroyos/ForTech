@@ -1,6 +1,6 @@
 import * as S from "./styled";
 import { FaWindowClose } from "react-icons/fa";
-import { useSelectedItems } from "../../global/SelectedItemsContext";
+import { useSelectedItems } from "../../context/SelectedItemsContext";
 import { areAllCategoriesPresent, formatCurrency } from "../../utils";
 import { pieces } from "../../global/const";
 
