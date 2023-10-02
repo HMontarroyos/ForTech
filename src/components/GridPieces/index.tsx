@@ -11,39 +11,8 @@ interface GridPiecesProps {
 
 function GridPieces({ currentCategory }: GridPiecesProps) {
   const [checkedMap, setCheckedMap] = useState<{ [key: number]: boolean }>({});
-  const { addSelectedItem, removeSelectedItem, selectedItems } = useSelectedItems();
-
-
-  const filteringRules = () => {
-      console.log("ITENS SELECIONANDOS", selectedItems[currentCategory])
-      
-    //"Placa Mãe AMD"
-
-    console.log("PARTS", parts && parts[currentCategory])
-/*    
-[
-    {
-        "name": "Placa Mãe Razor",
-        "image": "./images/motherboard/razor.png",
-        "price": 999.89
-    },
-    {
-        "name": "Placa Mãe AMD",
-        "image": "./images/motherboard/amd.png",
-        "price": 789.68
-    },
-    {
-        "name": "Placa Mãe Intel",
-        "image": "./images/motherboard/intel.png",
-        "price": 987.54
-    }
-]
-
-*/
-
-
-  }
-
+  const { addSelectedItem, removeSelectedItem, selectedItems } =
+    useSelectedItems();
 
   const handleRadioCheck = (index: number, category: any) => {
     setCheckedMap((prevState) => {
@@ -76,12 +45,54 @@ function GridPieces({ currentCategory }: GridPiecesProps) {
     return <Loading />;
   }
 
+  const customFilter = () => {
+    let filteredParts = parts[currentCategory];
+
+    if (currentCategory === "Processor") {
+      if (selectedItems["Motherboard"]?.name.includes("Razor")) {
+        // Filtrar os processadores para exibir apenas i3 e i5
+        filteredParts = filteredParts.filter(
+          (category) =>
+            category.name.includes("i3") || category.name.includes("i5")
+        );
+      }
+
+      if (selectedItems["Motherboard"]?.name.includes("AMD")) {
+        // Filtrar os processadores para exibir apenas i7 e i9
+        filteredParts = filteredParts.filter(
+          (category) =>
+            category.name.includes("i7") || category.name.includes("i9")
+        );
+      }
+    }
+
+    if (!selectedItems["Motherboard"]?.name.includes("Razor")) {
+      // Não exiba a videoCard NVIDIA GTX 1660
+      filteredParts = filteredParts.filter(
+        (category) => !category.name.includes("1660")
+      );
+    }
+
+    if (selectedItems["Motherboard"]?.name.includes("Intel")) {
+      // Filtrar as memórias para excluir a de 8GB DDR4
+      filteredParts = filteredParts.filter(
+        (category) => !category.name.includes("8GB")
+      );
+    }
+
+    if (selectedItems["Processor"]?.name.includes("i9")) {
+      // Exiba todos os Storage, exceto o 256GB SSD
+      filteredParts = filteredParts.filter(
+        (category) => !category.name.includes("256GB SSD")
+      );
+    }
+
+    return filteredParts;
+  };
+
   return (
     <S.Container>
-      <>   
-      {filteringRules()}
-      </>
-      {parts[currentCategory].map((category, index) => (
+      {customFilter().map((category, index) => (
         <S.ContainerCard
           key={index}
           onClick={() => handleRadioCheck(index, category)}
